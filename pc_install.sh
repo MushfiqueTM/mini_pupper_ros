@@ -23,7 +23,7 @@ source /opt/ros/jazzy/setup.bash
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
 if ! [ -d "mini_pupper_ros" ]; then
-  git clone https://github.com/MushfiqueTM/mini_pupper_ros.git -b ros2-dev mini_pupper_ros
+  git clone https://github.com/MushfiqueTM/mini_pupper_ros.git -b ros2-jazzy mini_pupper_ros
 fi
 vcs import < mini_pupper_ros/.minipupper.repos --recursive
 
@@ -38,5 +38,5 @@ rosdep install --from-paths src --ignore-src -r -y
 sudo apt install -y ros-jazzy-teleop-twist-keyboard ros-jazzy-teleop-twist-joy
 sudo apt install -y ros-jazzy-v4l2-camera ros-jazzy-image-transport-plugins
 sudo apt install -y ros-jazzy-rqt*
-pip3 install simple_pid
+pip3 install simple_pid --break-system-packages
 colcon build --symlink-install
