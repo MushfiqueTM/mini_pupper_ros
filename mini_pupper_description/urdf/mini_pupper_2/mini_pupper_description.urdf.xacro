@@ -1183,13 +1183,6 @@
           <stddev>0.004</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_lidar_controller" filename="gz_ros2_lidar.so">
-        <ros>
-          <remapping>~/out:=/scan</remapping>
-        </ros>
-        <output_type>sensor_msgs/LaserScan</output_type>
-        <frame_name>lidar_link</frame_name> 
-      </plugin>
     </sensor>
   </gazebo> 
 
@@ -1217,12 +1210,6 @@
     <sensor name="imu_controller" type="imu">
       <always_on>true</always_on>
       <update_rate>50</update_rate>
-      <plugin name="gazebo_ros_imu_sensor" filename="gz_ros2_imu.so">
-          <ros>
-              <namespace>/imu</namespace>
-              <remapping>~/out:=data</remapping>
-          </ros>
-      </plugin>
     </sensor>
   </gazebo>
 
@@ -1269,14 +1256,6 @@
         </clip>
       </camera>
 
-      <!-- Gazebo ROS plugin to publish /image_raw -->
-      <plugin name="camera_controller" filename="gz_ros2_camera.so">
-        <always_on>true</always_on>
-        <update_rate>30.0</update_rate>
-        <frame_name>camera_link</frame_name>
-        <image_topic_name>/image_raw</image_topic_name>
-        <!-- camera_info omitted to disable /camera_info -->
-      </plugin>
     </sensor>
   </gazebo>
 
