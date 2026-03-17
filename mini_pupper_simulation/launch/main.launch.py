@@ -151,7 +151,11 @@ def generate_launch_description():
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            '/imu/data@sensor_msgs/msg/Imu[gz.msgs.IMU'
+            '/world/default/model/mini_pupper_2/link/base_link/sensor/imu_controller/imu'
+            '@sensor_msgs/msg/Imu[gz.msgs.IMU'
+        ],
+        remappings=[
+            ('/world/default/model/mini_pupper_2/link/base_link/sensor/imu_controller/imu', '/imu/data')
         ],
         output='screen'
     )
