@@ -133,6 +133,19 @@ def generate_launch_description():
         arguments=['/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock'],
         output='screen'
     )
+
+    scan_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        arguments=[
+            '/world/default/model/mini_pupper_2/link/lidar_link/sensor/lidar/scan'
+            '@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan'
+        ],
+        remappings=[
+            ('/world/default/model/mini_pupper_2/link/lidar_link/sensor/lidar/scan', '/scan')
+        ],
+        output='screen'
+    )
     return LaunchDescription([
         RegisterEventHandler(
             event_handler=OnProcessExit(
@@ -148,5 +161,6 @@ def generate_launch_description():
         mini_pupper_bringup_launch,
         gazebo_launch,
         spawn_entity,
-        clock_bridge
+        clock_bridge,
+        scan_bridge
     ])
