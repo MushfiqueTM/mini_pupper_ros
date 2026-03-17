@@ -126,6 +126,13 @@ def generate_launch_description():
     #    ]
     #)
 
+    
+    clock_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        arguments=['/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock'],
+        output='screen'
+    )
     return LaunchDescription([
         RegisterEventHandler(
             event_handler=OnProcessExit(
@@ -140,5 +147,6 @@ def generate_launch_description():
         world_init_heading_launch_arg,
         mini_pupper_bringup_launch,
         gazebo_launch,
-        spawn_entity
+        spawn_entity,
+        clock_bridge
     ])
