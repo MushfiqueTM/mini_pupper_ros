@@ -1224,11 +1224,6 @@
         <diffuse>0 0 1 1</diffuse>
       </material>
     </visual>
-    <collision>
-      <geometry>
-        <box size="0.02 0.02 0.02"/>
-      </geometry>
-    </collision>
   </link>
 
   <joint name="bodyfront_camera_joint" type="fixed">
