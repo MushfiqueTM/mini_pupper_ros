@@ -1159,8 +1159,6 @@
   <gazebo reference="lidar_link">
     <material>Gazebo/FlatBlack</material>
     <sensor type="gpu_lidar" name="lidar">
-      <topic>lidar/scan</topic>
-      <gz_frame_id>lidar_link</gz_frame_id>
       <always_on>true</always_on>
       <update_rate>30</update_rate>
       <pose>0 0 0 0 0 0</pose>
