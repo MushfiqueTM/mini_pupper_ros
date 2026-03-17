@@ -146,6 +146,14 @@ def generate_launch_description():
         ],
         output='screen'
     )
+
+    lidar_frame_bridge = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        arguments=['0', '0', '0', '0', '0', '0', 'base_link', 'mini_pupper_2/base_link/lidar'],
+        output='screen'
+    )
+
     return LaunchDescription([
         RegisterEventHandler(
             event_handler=OnProcessExit(
@@ -162,5 +170,6 @@ def generate_launch_description():
         gazebo_launch,
         spawn_entity,
         clock_bridge,
-        scan_bridge
+        scan_bridge,
+        lidar_frame_bridge
     ])
