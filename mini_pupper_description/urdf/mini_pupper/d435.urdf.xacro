@@ -171,7 +171,7 @@ aluminum peripherial evaluation case.
           <far>9</far>
         </clip>
       </camera>
-      <plugin filename="gz_ros2_camera.so" name="camera_camera_controller">
+      <plugin filename="libgazebo_ros_openni_kinect.so" name="camera_camera_controller">
         <imageTopicName>/camera/color/image_raw</imageTopicName>
         <cameraInfoTopicName>/camera/color/camera_info</cameraInfoTopicName>
         <depthImageTopicName>/camera/aligned_depth_to_color/image_raw</depthImageTopicName>
