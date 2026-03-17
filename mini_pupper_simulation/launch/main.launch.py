@@ -138,11 +138,11 @@ def generate_launch_description():
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            '/world/default/model/mini_pupper_2/link/lidar_link/sensor/lidar/scan'
+            '/world/default/model/mini_pupper_2/link/base_link/sensor/lidar/scan'
             '@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan'
         ],
         remappings=[
-            ('/world/default/model/mini_pupper_2/link/lidar_link/sensor/lidar/scan', '/scan')
+            ('/world/default/model/mini_pupper_2/link/base_link/sensor/lidar/scan', '/scan')
         ],
         output='screen'
     )
