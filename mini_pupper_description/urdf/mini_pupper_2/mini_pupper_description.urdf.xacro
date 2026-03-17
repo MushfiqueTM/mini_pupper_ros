@@ -1193,19 +1193,6 @@
     </sensor>
   </gazebo> 
 
-  <gazebo>
-    <plugin filename="gz_ros2_base.so" name="p3d_base_controller">
-      <ros>
-        <remapping>odom:=odom/ground_truth</remapping>
-      </ros>
-      <body_name>base_link</body_name>
-      <frame_name>world</frame_name>
-      <update_rate>10.0</update_rate>
-      <xyz_offset>0 0 0</xyz_offset>
-      <rpy_offset>0 0 0</rpy_offset>
-      <gaussian_noise>0.01</gaussian_noise>
-    </plugin>
-  </gazebo>
 
   <gazebo>
     <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
@@ -1243,9 +1230,7 @@
   <link name="camera_link">
     <visual>
       <geometry>
-        <box>
-          <size>0.02 0.02 0.02</size>
-        </box>
+        <box size="0.02 0.02 0.02"/>
       </geometry>
       <material>
         <ambient>0 0 1 1</ambient>
@@ -1254,9 +1239,7 @@
     </visual>
     <collision>
       <geometry>
-        <box>
-          <size>0.02 0.02 0.02</size>
-        </box>
+        <box size="0.02 0.02 0.02"/>
       </geometry>
     </collision>
   </link>
