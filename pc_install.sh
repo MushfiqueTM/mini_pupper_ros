@@ -40,6 +40,12 @@ sudo apt install -y ros-jazzy-v4l2-camera ros-jazzy-image-transport-plugins
 sudo apt install -y ros-jazzy-rqt*
 sudo apt install -y python3-pip
 
+# Gazebo Harmonic packages
+sudo apt install -y ros-jazzy-gz-ros2-control
+sudo apt install -y ros-jazzy-ros-gz
+sudo apt install -y ros-jazzy-ros-gz-sim
+sudo apt install -y ros-jazzy-ros-gz-bridge
+
 # New LD Lidar driver dependency
 sudo apt install -y libudev-dev
 
