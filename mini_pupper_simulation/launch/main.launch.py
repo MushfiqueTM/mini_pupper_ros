@@ -147,10 +147,20 @@ def generate_launch_description():
         output='screen'
     )
 
+    imu_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        arguments=[
+            '/imu/data@sensor_msgs/msg/Imu[gz.msgs.IMU'
+        ],
+        output='screen'
+    )
+
     lidar_frame_bridge = Node(
         package='tf2_ros',
         executable='static_transform_publisher',
         arguments=['0', '0', '0', '0', '0', '0', 'base_link', 'mini_pupper_2/base_link/lidar'],
+        parameters=[{'use_sim_time': True}],
         output='screen'
     )
 
@@ -171,5 +181,6 @@ def generate_launch_description():
         spawn_entity,
         clock_bridge,
         scan_bridge,
+        imu_bridge,
         lidar_frame_bridge
     ])
