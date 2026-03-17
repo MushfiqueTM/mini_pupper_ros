@@ -105,6 +105,7 @@ def generate_launch_description():
         output="screen",
         parameters=[
             {"use_sim_time": use_sim_time},
+            {"publish_tf": False},
             {"orientation_from_imu": has_imu},
             {"urdf": Command(["xacro ", description_path])},
             ParameterFile(joints_config_path, allow_substs=True),
