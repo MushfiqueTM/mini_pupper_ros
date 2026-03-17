@@ -16,9 +16,9 @@ echo "setup.sh started at $(date)"
 # check Ubuntu version
 source /etc/os-release
 
-if [[ $UBUNTU_CODENAME != 'jammy' ]]
+if [[ $UBUNTU_CODENAME != 'noble' ]]
 then
-    echo "Ubuntu 22.04 LTS (Jammy Jellyfish) is required"
+    echo "Ubuntu 24.04 LTS (Noble Numbat) is required"
     echo "You are using $VERSION"
     exit 1
 fi
@@ -49,7 +49,7 @@ source /opt/ros/jazzy/setup.bash
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
 if ! [ -d "mini_pupper_ros" ]; then
-  git clone https://github.com/MushfiqueTM/mini_pupper_ros.git -b ros2-dev mini_pupper_ros
+  git clone https://github.com/MushfiqueTM/mini_pupper_ros.git -b ros2-jazzy mini_pupper_ros
 fi
 vcs import < mini_pupper_ros/.minipupper.repos --recursive
 # compiling gazebo and cartographer on Raspberry Pi is not recommended
@@ -64,7 +64,11 @@ rosdep install --from-paths src --ignore-src -r -y --skip-keys=joint_state_publi
 sudo apt install ros-jazzy-teleop-twist-keyboard
 sudo apt install ros-jazzy-teleop-twist-joy
 sudo apt install -y ros-jazzy-v4l2-camera ros-jazzy-image-transport-plugins
-pip3 install simple_pid
+
+# New LD Lidar driver dependency
+sudo apt install -y libudev-dev
+
+pip3 install simple_pid --break-system-packages
 
 #colcon build --symlink-install
 MAKEFLAGS=-j1 colcon build --executor sequential --symlink-install

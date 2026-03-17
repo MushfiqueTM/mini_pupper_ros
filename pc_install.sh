@@ -26,7 +26,7 @@ if ! [ -d "mini_pupper_ros" ]; then
   git clone https://github.com/MushfiqueTM/mini_pupper_ros.git -b ros2-jazzy mini_pupper_ros
 fi
 vcs import < mini_pupper_ros/.minipupper.repos --recursive
-
+  
 # Disable legacy Gazebo Classic packages (not needed with ros_gz)
 for pkg in champ_gazebo champ_description champ_bringup champ_navigation champ_config; do
   touch champ/champ/$pkg/COLCON_IGNORE
@@ -38,5 +38,10 @@ rosdep install --from-paths src --ignore-src -r -y
 sudo apt install -y ros-jazzy-teleop-twist-keyboard ros-jazzy-teleop-twist-joy
 sudo apt install -y ros-jazzy-v4l2-camera ros-jazzy-image-transport-plugins
 sudo apt install -y ros-jazzy-rqt*
+sudo apt install -y python3-pip
+
+# New LD Lidar driver dependency
+sudo apt install -y libudev-dev
+
 pip3 install simple_pid --break-system-packages
 colcon build --symlink-install
