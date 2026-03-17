@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(find /home/mushfiquetm/mini_pupper_ros/champ -name *.yaml -o -name *.yml)",
-      "Bash(mkdir -p /home/mushfiquetm/ros2_ws/src)",
-      "Bash(cp -r /home/mushfiquetm/mini_pupper_ros/champ/champ /home/mushfiquetm/ros2_ws/src/champ_jazzy)"
-    ]
-  }
-}

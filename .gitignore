@@ -5,3 +5,4 @@ log/
 ldlidar_stl_ros/
 all_ros_dependencies.txt
 extract_ros_dependencies.sh
+.claude/
