@@ -113,20 +113,6 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(ros2_controllers_launch_path)
     )
 
-    links_map_path = PathJoinSubstitution(
-        [FindPackageShare('mini_pupper_description'), 'config', 'champ', ROBOT_MODEL, 'links.yaml']
-    )
-    #contact_sensor_launch = Node(
-    #    package='champ_gazebo',
-    #    executable='contact_sensor',
-    #    output='screen',
-    #    parameters=[
-    #        {'use_sim_time': True},
-    #        links_map_path  # Load parameters from the YAML file,
-    #    ]
-    #)
-
-    
     clock_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
@@ -154,9 +140,11 @@ def generate_launch_description():
             '/world/default/model/mini_pupper_2/link/base_link/sensor/imu_controller/imu'
             '@sensor_msgs/msg/Imu[gz.msgs.IMU'
         ],
-        remappings=[
-            ('/world/default/model/mini_pupper_2/link/base_link/sensor/imu_controller/imu', '/imu/data')
-        ],
+        remappings=[(
+            '/world/default/model/mini_pupper_2/link/'
+            'base_link/sensor/imu_controller/imu',
+            '/imu/data'
+        )],
         output='screen'
     )
 
@@ -172,7 +160,7 @@ def generate_launch_description():
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=spawn_entity,
-                on_exit=[ros2_controllers_launch]# contact_sensor_launch]
+                on_exit=[ros2_controllers_launch]
             )
         ),
         world_launch_arg,
