@@ -138,20 +138,12 @@ def generate_launch_description():
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            '/world/default/model/mini_pupper_2/link/base_link/sensor/lidar/scan'
+            '/lidar/scan'
             '@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan'
         ],
         remappings=[
-            ('/world/default/model/mini_pupper_2/link/base_link/sensor/lidar/scan', '/scan')
+            ('/lidar/scan', '/scan')
         ],
-        output='screen'
-    )
-
-    lidar_frame_bridge = Node(
-        package='tf2_ros',
-        executable='static_transform_publisher',
-        arguments=['0', '0', '0', '0', '0', '0', 'base_link', 'mini_pupper_2/base_link/lidar'],
-        parameters=[{'use_sim_time': True}],
         output='screen'
     )
 
@@ -171,6 +163,5 @@ def generate_launch_description():
         gazebo_launch,
         spawn_entity,
         clock_bridge,
-        scan_bridge,
-        lidar_frame_bridge
+        scan_bridge
     ])
