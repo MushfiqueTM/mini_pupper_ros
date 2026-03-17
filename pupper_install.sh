@@ -54,7 +54,6 @@ fi
 vcs import < mini_pupper_ros/.minipupper.repos --recursive
 
 # Fix EKF time offset
-sed -i 's/transform_time_offset: 0.045/transform_time_offset: 0.0/' ~/ros2_ws/src/champ/champ/champ_base/config/ekf/base_to_footprint.yaml
 
 # compiling gazebo and cartographer on Raspberry Pi is not recommended
 touch src/champ/champ_gazebo/AMENT_IGNORE
