@@ -116,21 +116,21 @@ def generate_launch_description():
     links_map_path = PathJoinSubstitution(
         [FindPackageShare('mini_pupper_description'), 'config', 'champ', ROBOT_MODEL, 'links.yaml']
     )
-    contact_sensor_launch = Node(
-        package='champ_gazebo',
-        executable='contact_sensor',
-        output='screen',
-        parameters=[
-            {'use_sim_time': True},
-            links_map_path  # Load parameters from the YAML file,
-        ]
-    )
+    #contact_sensor_launch = Node(
+    #    package='champ_gazebo',
+    #    executable='contact_sensor',
+    #    output='screen',
+    #    parameters=[
+    #        {'use_sim_time': True},
+    #        links_map_path  # Load parameters from the YAML file,
+    #    ]
+    #)
 
     return LaunchDescription([
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=spawn_entity,
-                on_exit=[ros2_controllers_launch, contact_sensor_launch]
+                on_exit=[ros2_controllers_launch]# contact_sensor_launch]
             )
         ),
         world_launch_arg,
