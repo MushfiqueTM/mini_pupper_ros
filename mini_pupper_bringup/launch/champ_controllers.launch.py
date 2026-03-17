@@ -20,6 +20,7 @@
 import os
 
 from launch_ros.actions import Node
+from launch_ros.parameter_descriptions import ParameterFile
 from launch_ros.substitutions import FindPackageShare
 
 from launch import LaunchDescription
@@ -91,9 +92,9 @@ def generate_launch_description():
                 "joint_controller_topic": "joint_group_effort_controller/joint_trajectory"
             },
             {"urdf": Command(["xacro ", description_path])},
-            joints_config_path,
-            links_config_path,
-            gait_config_path,
+            ParameterFile(joints_config_path, allow_substs=True),
+            ParameterFile(links_config_path, allow_substs=True),
+            ParameterFile(gait_config_path, allow_substs=True),
         ],
         remappings=[("/cmd_vel/smooth", "/cmd_vel")],
     )
@@ -106,9 +107,9 @@ def generate_launch_description():
             {"use_sim_time": use_sim_time},
             {"orientation_from_imu": has_imu},
             {"urdf": Command(["xacro ", description_path])},
-            joints_config_path,
-            links_config_path,
-            gait_config_path,
+            ParameterFile(joints_config_path, allow_substs=True),
+            ParameterFile(links_config_path, allow_substs=True),
+            ParameterFile(gait_config_path, allow_substs=True),
         ],
     )
 
