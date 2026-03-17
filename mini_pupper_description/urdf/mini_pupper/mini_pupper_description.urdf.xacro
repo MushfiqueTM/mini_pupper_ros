@@ -1729,12 +1729,12 @@
   
   <gazebo reference="lidar_link">
     <material>Gazebo/FlatBlack</material>
-    <sensor type="ray" name="lidar">
+    <sensor type="gpu_lidar" name="lidar">
       <always_on>true</always_on>
       <update_rate>30</update_rate>
       <pose>0 0 0 0 0 0</pose>
       <visualize>false</visualize>
-      <ray>
+      <lidar>
         <scan>
           <horizontal>
             <samples>1040</samples>
@@ -1753,30 +1753,8 @@
           <mean>0.0</mean>
           <stddev>0.004</stddev>
         </noise>
-      </ray>
-      <plugin name="gazebo_ros_lidar_controller" filename="gz_ros2_lidar.so">
-        <ros>
-          <remapping>~/out:=/scan</remapping>
-        </ros>
-        <output_type>sensor_msgs/LaserScan</output_type>
-        <frame_name>lidar_link</frame_name>
-        <!--min_intensity>100.0</min_intensity-->
-      </plugin>
+      </lidar>
     </sensor>
-  </gazebo>
-  
-  <gazebo>
-    <plugin filename="gz_ros2_base.so" name="p3d_base_controller">
-      <ros>
-          <remapping>odom:=odom/ground_truth</remapping>
-      </ros>
-      <body_name>base_link</body_name>
-      <frame_name>world</frame_name>
-      <update_rate>10.0</update_rate>
-      <xyz_offset>0 0 0</xyz_offset>
-      <rpy_offset>0 0 0</rpy_offset>
-      <gaussian_noise>0.01</gaussian_noise>
-    </plugin>
   </gazebo>
   
   <gazebo>
@@ -1802,12 +1780,6 @@
     <sensor name="imu_controller" type="imu">
       <always_on>true</always_on>
       <update_rate>50</update_rate>
-      <plugin name="gazebo_ros_imu_sensor" filename="gz_ros2_imu.so">
-          <ros>
-              <namespace>/imu</namespace>
-              <remapping>~/out:=data</remapping>
-          </ros>
-      </plugin>
     </sensor>
   </gazebo>
   
