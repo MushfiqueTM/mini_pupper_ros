@@ -1219,7 +1219,7 @@
       <geometry>
         <box size="0.02 0.02 0.02"/>
       </geometry>
-      <material>
+      <material name="blue">
         <ambient>0 0 1 1</ambient>
         <diffuse>0 0 1 1</diffuse>
       </material>
