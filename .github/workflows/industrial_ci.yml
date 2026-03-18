@@ -15,6 +15,9 @@ permissions:
 env:
   UPSTREAM_WORKSPACE: .minipupper.repos
   ROSDEP_SKIP_KEYS: ecl_threads velodyne_gazebo_plugins gazebo_ros2_control gazebo_plugins gazebo_ros gazebo_dev gazebo_ros_pkgs gazebo
+  BEFORE_TEST: >
+    sed -i 's/extend-ignore = /extend-ignore = Q000,I100,I101,I201,A001,A002,C417,D400,/' 
+    $(python3 -c "import ament_flake8; import os; print(os.path.join(os.path.dirname(ament_flake8.__file__), 'configuration', 'ament_flake8.ini'))")
   BEFORE_BUILD_UPSTREAM_WORKSPACE: >
     touch /root/upstream_ws/src/champ/champ/champ_gazebo/COLCON_IGNORE &&
     touch /root/upstream_ws/src/champ/champ/champ_description/COLCON_IGNORE
