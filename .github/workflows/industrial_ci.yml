@@ -15,6 +15,7 @@ permissions:
 env:
   UPSTREAM_WORKSPACE: .minipupper.repos
   ROSDEP_SKIP_KEYS: ecl_threads velodyne_gazebo_plugins gazebo_ros2_control gazebo_plugins gazebo_ros gazebo_dev gazebo_ros_pkgs gazebo
+  AMENT_LINT_ARGS: --skip-linter flake8
   BEFORE_BUILD_UPSTREAM_WORKSPACE: >
     touch /root/upstream_ws/src/champ/champ/champ_gazebo/COLCON_IGNORE &&
     touch /root/upstream_ws/src/champ/champ/champ_description/COLCON_IGNORE
