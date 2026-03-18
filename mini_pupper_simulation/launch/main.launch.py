@@ -116,7 +116,7 @@ def generate_launch_description():
     clock_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
-        arguments=['/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock'],
+        arguments=['/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock]'],
         output='screen'
     )
 
@@ -125,7 +125,7 @@ def generate_launch_description():
         executable='parameter_bridge',
         arguments=[
             '/world/default/model/mini_pupper_2/link/base_link/sensor/lidar/scan'
-            '@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan'
+            '@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan]'
         ],
         remappings=[
             ('/world/default/model/mini_pupper_2/link/base_link/sensor/lidar/scan', '/scan')
@@ -138,7 +138,7 @@ def generate_launch_description():
         executable='parameter_bridge',
         arguments=[
             '/world/default/model/mini_pupper_2/link/base_link/sensor/imu_controller/imu'
-            '@sensor_msgs/msg/Imu[gz.msgs.IMU'
+            '@sensor_msgs/msg/Imu[gz.msgs.IMU]'
         ],
         remappings=[(
             '/world/default/model/mini_pupper_2/link/'

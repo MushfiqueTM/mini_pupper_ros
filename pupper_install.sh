@@ -55,8 +55,8 @@ vcs import < mini_pupper_ros/.minipupper.repos --recursive
 
 
 # compiling gazebo and cartographer on Raspberry Pi is not recommended
-touch src/champ/champ_gazebo/AMENT_IGNORE
-touch src/champ/champ_navigation/AMENT_IGNORE
+touch src/champ/champ/champ_gazebo/AMENT_IGNORE
+touch src/champ/champ/champ_navigation/AMENT_IGNORE
 touch mini_pupper_ros/mini_pupper_simulation/AMENT_IGNORE
 touch mini_pupper_ros/mini_pupper_navigation/AMENT_IGNORE
 
