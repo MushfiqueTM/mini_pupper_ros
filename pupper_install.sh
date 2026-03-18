@@ -53,7 +53,6 @@ if ! [ -d "mini_pupper_ros" ]; then
 fi
 vcs import < mini_pupper_ros/.minipupper.repos --recursive
 
-# Fix EKF time offset
 
 # compiling gazebo and cartographer on Raspberry Pi is not recommended
 touch src/champ/champ_gazebo/AMENT_IGNORE
