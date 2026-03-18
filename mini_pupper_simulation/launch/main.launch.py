@@ -113,38 +113,21 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(ros2_controllers_launch_path)
     )
 
-    clock_bridge = Node(
-        package='ros_gz_bridge',
-        executable='parameter_bridge',
-        arguments=['/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock]'],
-        output='screen'
-    )
-
-    scan_bridge = Node(
+    gz_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            '/world/default/model/mini_pupper_2/link/base_link/sensor/lidar/scan'
-            '@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan]'
+            '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock]',
+            f'/world/default/model/{ROBOT_MODEL}/link/base_link/sensor/lidar/scan'
+            '@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan]',
+            f'/world/default/model/{ROBOT_MODEL}/link/base_link/sensor/imu_controller/imu'
+            '@sensor_msgs/msg/Imu[gz.msgs.IMU]',
         ],
         remappings=[
-            ('/world/default/model/mini_pupper_2/link/base_link/sensor/lidar/scan', '/scan')
+            (f'/world/default/model/{ROBOT_MODEL}/link/base_link/sensor/lidar/scan', '/scan'),
+            (f'/world/default/model/{ROBOT_MODEL}/link/base_link/sensor/imu_controller/imu',
+             '/imu/data'),
         ],
-        output='screen'
-    )
-
-    imu_bridge = Node(
-        package='ros_gz_bridge',
-        executable='parameter_bridge',
-        arguments=[
-            '/world/default/model/mini_pupper_2/link/base_link/sensor/imu_controller/imu'
-            '@sensor_msgs/msg/Imu[gz.msgs.IMU]'
-        ],
-        remappings=[(
-            '/world/default/model/mini_pupper_2/link/'
-            'base_link/sensor/imu_controller/imu',
-            '/imu/data'
-        )],
         output='screen'
     )
 
@@ -171,8 +154,6 @@ def generate_launch_description():
         mini_pupper_bringup_launch,
         gazebo_launch,
         spawn_entity,
-        clock_bridge,
-        scan_bridge,
-        imu_bridge,
+        gz_bridge,
         lidar_frame_bridge
     ])
