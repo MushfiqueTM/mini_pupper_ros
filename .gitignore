@@ -292,8 +292,4 @@ qtcreator-*
 CATKIN_IGNORE
 
 # End of https://www.toptal.com/developers/gitignore/api/c,c++,python,ros
-/champ/
-ldlidar_stl_ros/
-all_ros_dependencies.txt
-extract_ros_dependencies.sh
 .claude/
