@@ -14,7 +14,7 @@ permissions:
 
 env:
   UPSTREAM_WORKSPACE: .minipupper.repos
-  ROSDEP_SKIP_KEYS: ecl_threads velodyne_gazebo_plugins gazebo_ros2_control gazebo_plugins gazebo_ros gazebo_dev
+  ROSDEP_SKIP_KEYS: ecl_threads velodyne_gazebo_plugins gazebo_ros2_control gazebo_plugins gazebo_ros gazebo_dev gazebo_ros_pkgs gazebo
 
 jobs:
   industrial_ci:
