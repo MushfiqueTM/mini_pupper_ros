@@ -328,11 +328,11 @@ recoveries_server:
     cycle_frequency: 10.0
     recovery_plugins: ["spin", "backup", "wait"]
     spin:
-      plugin: "nav2_recoveries::Spin"
+      plugin: "nav2_recoveries/Spin"
     backup:
-      plugin: "nav2_recoveries::BackUp"
+      plugin: "nav2_recoveries/BackUp"
     wait:
-      plugin: "nav2_recoveries::Wait"
+      plugin: "nav2_recoveries/Wait"
     global_frame: odom
     robot_base_frame: base_link
     transform_timeout: 0.1
@@ -376,6 +376,8 @@ collision_monitor:
     scan:
       type: "scan"
       topic: "scan"
+# Dummy config: docking_server is loaded by nav2_bringup's hardcoded
+# lifecycle_nodes list but Mini Pupper has no dock hardware.
 docking_server:
   ros__parameters:
     use_sim_time: True
