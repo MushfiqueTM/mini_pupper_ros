@@ -27,35 +27,11 @@ if ! [ -d "mini_pupper_ros" ]; then
 fi
 vcs import < mini_pupper_ros/.minipupper.repos --recursive
 
-# Fix EKF configs for Gazebo Harmonic sim time compatibility
-sed -i 's/frequency: 50.0/frequency: 10.0/' ~/ros2_ws/src/champ/champ/champ_base/config/ekf/base_to_footprint.yaml
-sed -i 's/frequency: 50.0/frequency: 15.0/' ~/ros2_ws/src/champ/champ/champ_base/config/ekf/footprint_to_odom.yaml
-python3 -c "
-path = '$HOME/ros2_ws/src/champ/champ/champ_base/config/ekf/base_to_footprint.yaml'
-content = open(path).read()
-content = content.replace('true, true, true,\n                  false, false, false,\n                  false, false, false]', 'false, false, false,\n                  true, true, true,\n                  false, false, false]')
-open(path, 'w').write(content)
-"
-  
-# Disable legacy Gazebo Classic packages (not needed with ros_gz)
-for pkg in champ_gazebo champ_description champ_bringup champ_navigation champ_config; do
-  touch champ/champ/$pkg/COLCON_IGNORE
-done
-
 # Install dependencies and build the ROS 2 packages
 cd ~/ros2_ws
 rosdep install --from-paths src --ignore-src -r -y
 sudo apt install -y ros-jazzy-teleop-twist-keyboard ros-jazzy-teleop-twist-joy
 sudo apt install -y ros-jazzy-v4l2-camera ros-jazzy-image-transport-plugins
 sudo apt install -y ros-jazzy-rqt*
-sudo apt install -y python3-pip
-
-# Gazebo Harmonic packages
-sudo apt install -y ros-jazzy-gz-ros2-control
-sudo apt install -y ros-jazzy-ros-gz
-
-# New LD Lidar driver dependency
-sudo apt install -y libudev-dev
-
-pip3 install simple_pid --break-system-packages
+pip3 install simple_pid
 colcon build --symlink-install

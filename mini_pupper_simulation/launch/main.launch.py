@@ -76,15 +76,11 @@ def generate_launch_description():
         }.items()
     )
 
-    gazebo_launch_path = PathJoinSubstitution([
-        FindPackageShare('ros_gz_sim'),
-        'launch',
-        'gz_sim.launch.py'
-    ])
+    gazebo_launch_path = PathJoinSubstitution([this_package, 'launch', 'gazebo.launch.py'])
     gazebo_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(gazebo_launch_path),
         launch_arguments={
-            'gz_args': ['-r ', world]
+            'world': world
         }.items()
     )
 
@@ -113,32 +109,6 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(ros2_controllers_launch_path)
     )
 
-    gz_bridge = Node(
-        package='ros_gz_bridge',
-        executable='parameter_bridge',
-        arguments=[
-            '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock]',
-            f'/world/default/model/{ROBOT_MODEL}/link/base_link/sensor/lidar/scan'
-            '@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan]',
-            f'/world/default/model/{ROBOT_MODEL}/link/base_link/sensor/imu_controller/imu'
-            '@sensor_msgs/msg/Imu[gz.msgs.IMU]',
-        ],
-        remappings=[
-            (f'/world/default/model/{ROBOT_MODEL}/link/base_link/sensor/lidar/scan', '/scan'),
-            (f'/world/default/model/{ROBOT_MODEL}/link/base_link/sensor/imu_controller/imu',
-             '/imu/data'),
-        ],
-        output='screen'
-    )
-
-    lidar_frame_bridge = Node(
-        package='tf2_ros',
-        executable='static_transform_publisher',
-        arguments=['0', '0', '0', '0', '0', '0', 'base_link', 'mini_pupper_2/base_link/lidar'],
-        parameters=[{'use_sim_time': True}],
-        output='screen'
-    )
-
     return LaunchDescription([
         RegisterEventHandler(
             event_handler=OnProcessExit(
@@ -153,7 +123,5 @@ def generate_launch_description():
         world_init_heading_launch_arg,
         mini_pupper_bringup_launch,
         gazebo_launch,
-        spawn_entity,
-        gz_bridge,
-        lidar_frame_bridge
+        spawn_entity
     ])

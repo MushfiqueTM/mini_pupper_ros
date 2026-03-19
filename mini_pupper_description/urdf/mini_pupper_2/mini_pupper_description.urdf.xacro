@@ -1183,9 +1183,19 @@
           <stddev>0.004</stddev>
         </noise>
       </lidar>
+      <topic>/scan</topic>
+      <gz_frame_id>lidar_link</gz_frame_id>
     </sensor>
-  </gazebo> 
+  </gazebo>
 
+  <gazebo>
+    <plugin filename="gz-sim-odometry-publisher-system" name="gz::sim::systems::OdometryPublisher">
+      <odom_frame>world</odom_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+      <odom_publish_frequency>10.0</odom_publish_frequency>
+      <odom_topic>odom/ground_truth</odom_topic>
+    </plugin>
+  </gazebo>
 
   <gazebo>
     <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
@@ -1210,6 +1220,8 @@
     <sensor name="imu_controller" type="imu">
       <always_on>true</always_on>
       <update_rate>50</update_rate>
+      <topic>/imu/data</topic>
+      <gz_frame_id>imu_link</gz_frame_id>
     </sensor>
   </gazebo>
 
@@ -1251,6 +1263,8 @@
         </clip>
       </camera>
 
+      <topic>/image_raw</topic>
+      <gz_frame_id>camera_link</gz_frame_id>
     </sensor>
   </gazebo>
 

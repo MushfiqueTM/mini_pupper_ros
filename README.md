@@ -1,6 +1,6 @@
 [![ROS2 VERSION](https://img.shields.io/badge/ROS-ROS%202%20Jazzy-brightgreen)](http://docs.ros.org/en/jazzy/index.html)
 &nbsp;
-[![Ubuntu VERSION](https://img.shields.io/badge/Ubuntu-22.04-green)](https://ubuntu.com/)
+[![Ubuntu VERSION](https://img.shields.io/badge/Ubuntu-24.04-green)](https://ubuntu.com/)
 &nbsp;
 [![LICENSE](https://img.shields.io/badge/license-Apache--2.0-informational)](https://github.com/mangdangroboticsclub/mini_pupper_ros/blob/ros2/LICENSE)
 &nbsp;
@@ -16,7 +16,7 @@
   <img src="imgs/mini_pupper_2.jpg" alt="Mini Pupper 2" width="480"/>
 </p>
 
-A comprehensive ROS 2 robotics platform for autonomous navigation, computer vision, and multi-robot coordination. Built for research, education, and development on Ubuntu 22.04 with ROS 2 Jazzy.
+A comprehensive ROS 2 robotics platform for autonomous navigation, computer vision, and multi-robot coordination. Built for research, education, and development on Ubuntu 24.04 with ROS 2 Jazzy.
 
 ## Key Capabilities
 
@@ -43,9 +43,9 @@ Programmable dance sequences with audio synchronization capabilities.
 ## Quick Start
 
 ### Pre-built Images
-Flash the ready-to-use image containing Ubuntu 22.04, ROS 2 Jazzy, and all Mini Pupper packages:
-- **Mini Pupper 2**: [2024Oct.12.Ubuntu22.04.MD-MiniPupper2-Y.ROS2Humble.zip](https://drive.google.com/drive/folders/1_HNbIb2RDmHpwECjqiVlkylvU19BSfOh?usp=sharing)
-- **Mini Pupper**: [2024Oct.12.Ubuntu22.04.MD-MiniPupper.ROS2Humble.zip](https://drive.google.com/drive/folders/1jJm_6qBIYGGp2dpZNm668D0eH1JpfCqn?usp=sharing)
+Flash the ready-to-use image containing Ubuntu 24.04, ROS 2 Jazzy, and all Mini Pupper packages:
+- **Mini Pupper 2**: [Ubuntu24.04.ROS2Jazzy.MiniPupper2](https://drive.google.com/drive/folders/1_HNbIb2RDmHpwECjqiVlkylvU19BSfOh?usp=sharing)
+- **Mini Pupper**: [Ubuntu24.04.ROS2Jazzy.MiniPupper](https://drive.google.com/drive/folders/1jJm_6qBIYGGp2dpZNm668D0eH1JpfCqn?usp=sharing)
 
 ### Test Basic Movement
 ```bash
